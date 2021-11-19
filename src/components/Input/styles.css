@@ -1,0 +1,29 @@
+.input {
+    height: 50px;
+    width: 80%;
+    border-radius: 12px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+}
+.input > input {
+    background: none;
+    border: none;
+    margin-left: 12px;
+    outline: 0;
+    flex: 1;
+    height: 50px;
+}
+.input > button {
+    margin-right: 8px;
+    border: none;
+    background: rgb(226, 217, 217);
+    border-radius: 8px;
+    width: 60px;
+    height: 30px;
+    outline: 0;
+    cursor: pointer;
+}

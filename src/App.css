@@ -1,0 +1,30 @@
+.App {
+  height: 100vh;
+  width: 100vw;
+  background-color: #80acfd;
+  display: grid;
+  place-items: center;
+}
+.container {
+    height: 70vh;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4ed9d;
+    border-radius: 12px;
+    padding: 32px 0;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.container::-webkit-scrollbar {
+    display: none;
+}
+.lista {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

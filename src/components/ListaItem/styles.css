@@ -1,0 +1,15 @@
+.listaItem {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 40px;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+.listaItem > p {
+    flex: 1;
+}
+.listaItem--done {
+    text-decoration: line-through;
+}
