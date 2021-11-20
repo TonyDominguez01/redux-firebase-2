@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import firebase from 'firebase';
+import { auth } from '../../firebase';
 import './styles.css'
 
 export const Login = () => {
@@ -9,11 +11,36 @@ export const Login = () => {
 
     const handleSubmitLogin = (e) => {
         e.preventDefault();
-        console.log(email, password);
+        auth.signInWithEmailAndPassword(email, password).then(() =>
+        console.log('login'))
+        
+        setName('')
+        setEmail('')
+        setPassword('')
     }
-    const handleSubmitRegister = (e) => {
+    const handleSubmitRegister = async (e) => {
         e.preventDefault();
-        console.log(name, email, password);
+        if (!name) return alert("Por favor ingrese un nombre!")
+        if (!email) return alert("Por favor ingrese un email!")
+        if (!password) return alert("Por favor ingrese un password!")
+
+        auth.createUserWithEmailAndPassword(email, password).then((userAuth) => {
+            userAuth.user.updateProfile({
+                displayName: name
+            }).then(() => {
+                console.log('login')
+            })
+            .catch (error => {
+                console.log(error)
+            })
+        })
+        setName('')
+        setEmail('')
+        setPassword('')
+    }
+    const loginGoogle = async () => {
+        const provider = new firebase.auth.GoogleAuthProvider()
+        await auth.signInWithPopup(provider)
     }
 
     return (
@@ -26,6 +53,8 @@ export const Login = () => {
                     <input type="email" placeholder="Correo" value={email} onChange={e => setEmail(e.target.value)} />
                     <input type="password" placeholder="Contraseña" value={password} onChange={e => setPassword(e.target.value)} />
                     <button type="submit">Ingresar</button>
+
+                    <button className="google" type="button" onClick={loginGoogle}>Ingresar con Google</button>
                 </form>
                 <p>¿Eres nuevo? <span onClick={() => setLoginn(!loginn)}>Registrarse ahora</span></p>
 

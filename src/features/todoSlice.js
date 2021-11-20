@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { db } from '../firebase';
 
 // const [state, setState] = useState()
 const initialState = {
@@ -13,11 +14,16 @@ const todoSlice = createSlice({
             state.todoList = (actions.payload)
         },
         setCheck: (state, actions) => {
-            state.todoList.map(item => {
+            /* state.todoList.map(item => {
                 if (actions.payload === item.id) {
                     item.done = !item.done
                 }
-            })
+            }) */
+            (async () => {
+                const queryRef = db.collection('post').doc(actions.payload);
+                const query = await queryRef.get();
+                query.data().done ? await queryRef.update({done: false}) : await queryRef.update({done:true})
+            })()
         }
     }
 });

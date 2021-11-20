@@ -28,3 +28,12 @@
     flex-direction: column;
     align-items: center;
 }
+.salir {
+    position: absolute;
+    top: 12%;
+    margin-left: 24%;
+    border: none;
+    color: white;
+    background: #2b9038;
+    cursor: pointer;
+}

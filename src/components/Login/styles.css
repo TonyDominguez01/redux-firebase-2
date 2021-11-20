@@ -42,3 +42,10 @@
     transition: .3s ease-in-out;
     cursor: pointer;
 }
+.login > form > .google {
+    background: #f84728;
+    transition: .3s ease-in-out;
+}
+.login > form > .google:hover {
+    background: #ec4123;
+}

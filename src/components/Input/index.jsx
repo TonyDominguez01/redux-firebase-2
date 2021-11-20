@@ -9,11 +9,11 @@ export const Input = () => {
     const dispatch = useDispatch();
 
     const sendPost = () => {
-        db.collection('post'.padEnd({
+        db.collection('post').add({
             item: input,
             done: false,
             timestamp: Date.now()
-        }))
+        })
         console.log(Date.now);
         setInput('');
     }
